@@ -31,6 +31,7 @@ This project is structured in a way that demonstrates the use of the Data Access
 <b>The database consists of three tables: Customer, FoodItem, and Order.</b>
 
 <p><b>Customer Table :</b></p>
+<!--
 <table>
 <tr >
   <th>Column</th>
@@ -43,7 +44,7 @@ This project is structured in a way that demonstrates the use of the Data Access
   <td></td>    
 </tr>
 </table>
-<br>
+ -->
 <h3>Setup Instructions</h3>
 <h2>Prerequisites</h2><ul>
 <li>Java Development Kit (JDK) 8 or higher</li>
@@ -101,10 +102,10 @@ bash
 Copy code
 javac -d bin src/main/java/com/foodorderingsystem/Main.java
 
- -->
+
 java -cp bin com.foodorderingsystem.Main
 
 </ul>
-
+ -->
 
 
