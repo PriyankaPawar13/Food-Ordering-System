@@ -26,12 +26,12 @@ This project is structured in a way that demonstrates the use of the Data Access
 <li><b>Main:</b> Entry point of the application, demonstrating how to use the various components.</li>
 <li><b>utility:</b> for DataBase Connection </li>
 </ol>
-
+<!--
 <h3>Database Schema</h3>
 <b>The database consists of three tables: Customer, FoodItem, and Order.</b>
 
 <p><b>Customer Table :</b></p>
-<!--
+
 <table>
 <tr >
   <th>Column</th>
