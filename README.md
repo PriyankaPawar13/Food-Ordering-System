@@ -20,10 +20,20 @@ This project is structured in a way that demonstrates the use of the Data Access
 <b></b>The project is organized into the following main components:</b>
 
 <ol>
-<li>Model: Contains classes that represent the data structure, such as Customer, FoodItem, and Order.</li>
-<li>DAO (Data Access Object): Interfaces and their implementations for accessing and manipulating the database.</li>
-<<li>li>Service: Business logic and operations involving multiple DAOs.</li>
-<li>Main: Entry point of the application, demonstrating how to use the various components.</li>
-<li>utility:</li>
+<li><b>Model:</b> Contains classes that represent the data structure, such as `Customer`, `FoodItem`, and `Order`.</li>
+<li><b>DAO (Data Access Object):</b> Interfaces and their implementations for accessing and manipulating the database.</li>
+<li><b>Service:</b> Business logic and operations involving multiple DAOs.</li>
+<li><b>Main:</b> Entry point of the application, demonstrating how to use the various components.</li>
+<li><b>utility:</b> for DataBase Connection </li>
 </ol>
+
+<h3>Database Schema</h3>
+<b>The database consists of three tables: Customer, FoodItem, and Order.</b>
+
+<b>Customer Table</b>
+<table>
+<tr>Column Type	Description</tr>
+<td>id	INT	Primary Key
+name	VARCHAR	Customer's name
+</table>
 
