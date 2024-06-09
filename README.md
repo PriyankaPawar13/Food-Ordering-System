@@ -53,13 +53,57 @@ This project is structured in a way that demonstrates the use of the Data Access
 <br>
 
 <h3>Step-by-Step Setup</h3>
+bash
 <b>Clone the repository:</b>
 <ul>
 <li>Copy code</li>
-git clone https://github.com/yourusername/FoodOrderingSystem.git
-cd FoodOrderingSystem
-</ul>
+<p>git clone https://github.com/yourusername/FoodOrderingSystem.git</p>
+<p> cd FoodOrderingSystem</p>
 
+<li>Create the database and tables:</li>
+</p>
+sql
+<b>CREATE DATABASE FoodOrderingSystem;</b>
+<p>
+USE FoodOrderingSystem;
+
+CREATE TABLE Customer (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE FoodItem (
+    itemId INT PRIMARY KEY AUTO_INCREMENT,
+    itemName VARCHAR(100) NOT NULL,
+    itemPrice DOUBLE NOT NULL
+);
+
+CREATE TABLE `Order` (
+    orderId INT PRIMARY KEY AUTO_INCREMENT,
+    customerId INT,
+    foodItemId INT,
+    quantity INT,
+    FOREIGN KEY (customerId) REFERENCES Customer(id),
+    FOREIGN KEY (foodItemId) REFERENCES FoodItem(itemId)
+);
+
+</p>
+Configure the database connection:
+Update the application.properties file with your database credentials:
+
+properties
+Copy code
+jdbc.url=jdbc:mysql://localhost:3306/FoodOrderingSystem
+jdbc.user=root
+jdbc.password=yourpassword
+Compile and run the application:
+
+bash
+Copy code
+javac -d bin src/main/java/com/foodorderingsystem/Main.java
+java -cp bin com.foodorderingsystem.Main
+
+</ul>
 
 
 
