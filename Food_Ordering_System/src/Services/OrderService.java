@@ -39,6 +39,9 @@ public class OrderService {
 		return orderDAO.getOrderDetailsByCustomerID(customerid);
 	}
 
-	
+	public int getQuantityBYId(int id) throws SQLException
+	{
+		return orderDAO.getQuantityBYId(id);
+	}
 }
 

@@ -85,7 +85,7 @@ public class OrderDAO {
 		stmt.setInt(2, order.getFoodItem().getItemID());
 		stmt.setInt(3, order.getQuantity());
 		stmt.setInt(4, order.getOrderID());
-		stmt.executeUpdate(UPDATE_QUERY);
+		stmt.executeUpdate();
 	}
 
 	public void deleteOrder(int id) throws SQLException {
@@ -153,16 +153,16 @@ public class OrderDAO {
 		List<Order> orders = new ArrayList<>();
 		String SELECT = "select * from `order` where customerid = ?";
 	    Connection connection = DataBaseUtility.getconnection();
-	    Statement stmt = connection.createStatement();
-	    ResultSet result = stmt.executeQuery(SELECT);
+	    PreparedStatement stmt = connection.prepareStatement(SELECT);
+	    stmt.setInt(1, customerid);
+	    ResultSet result = stmt.executeQuery();
 	    while(result.next())
 	    {
 	    	int orderid = result.getInt("orderId");
-	    	int customerid1 = result.getInt("customerid");
-	    	int foodItemId = result.getInt("fooItemId");
-	    	int quantity = result.getInt("qunatity");
+	    	int foodItemId = result.getInt("foodItemId");
+	    	int quantity = result.getInt("quantity");
 	    	
-	    	Customer customer = getCustomerById(customerid1);
+	    	Customer customer = getCustomerById(customerid);
 	    	FoodItem foodItem = getFoodItembyId(foodItemId);
 	    	orders.add(new Order(orderid,customer,foodItem,quantity));
 	    }

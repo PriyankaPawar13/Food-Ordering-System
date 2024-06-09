@@ -41,9 +41,14 @@ public class Main {
     
     	System.out.println("1.Already Registered\n2."
     			+ "Create New Account\n3."
-    			+ "Admin Login");
-    	
-    	int key = Integer.parseInt(scan.nextLine());
+    			+ "Admin Login");   	
+//    	int key = Integer.parseInt(scan.nextLine());
+    	int key = scan.nextInt();
+    	OptionMenu(key);
+    }
+    
+    private void OptionMenu(int key) throws SQLException
+    { 	
     	if(key == 1)
     	while (true) {
     		showOrderMenu();
@@ -59,6 +64,12 @@ public class Main {
 					  deleteOrder();
 					  break;
 				  case 4:
+					  getOrderDetailsByCustomerID();
+					  break;  
+				  case 5:
+					  updateOrderById();
+					  break;
+				  case 6:
 					  System.out.println("Exiting...\nThank You");
 					  return;
 					  
@@ -70,17 +81,29 @@ public class Main {
     	else if(key == 2)
     	{
     		registerCustomer();
+    		System.out.println();
+    		System.out.println("Wants to an order Something..");
+    		System.out.println("If Yes Press 1...if No Press 0");
+    		int key1 = scan.nextInt();
+    		if(key1 == 1)
+    		{    			
+    			OptionMenu(key1);
+    		}else
+    		{
+    			System.out.println("Thank You For Registering...");
+    		}
     		
     		}
     	else if(key == 3)
     		{
     		while (true) {
     			showAdminMenu();
-    			scan.nextLine();
-        		int choice = Integer.parseInt(scan.nextLine());
+//    			scan.nextLine();
+    			int choice = scan.nextInt();
+//        		int choice = Integer.parseInt(scan.nextLine());
         		switch (choice) {
     				  case 1:
-    				       registerCustomer();
+    				       AddCustomer();
     				       break;
     				  case 2:
     				       viewAllCustomer();
@@ -103,10 +126,19 @@ public class Main {
     				  case 8:
     					  viewAllOrders();
     					  break;
-//    				  case 9:
-//    					  getOrderDetailsByCustomerID();
-//    					  break;
-    				  case 9 :
+    				  case 9:
+    					  getOrderDetailsByCustomerID();
+    					  break;
+    				  case 10 :
+    					  getQuantityByOrderId();
+    					  break;
+    				  case 11:
+    					  deleteOrder();
+    					  break;
+    				  case 12:
+    					  updateOrderById();
+    					  break;
+    				  case 13 :
     					  System.out.println("Exiting...\nThank You !");
     					  return;
     				  default:
@@ -120,40 +152,117 @@ public class Main {
     		}
     }
     
+	
+	private void updateOrderById() throws SQLException {
+		// TODO Auto-generated method stub
+		System.out.println("Enter Order ID :");
+		int orderid  = scan.nextInt();
+		Order orderUpdate = orderService.getOrderById(orderid);
+		if(orderUpdate != null)
+		{		
+			System.out.println("Enter Customer ID :");
+			int customerid = scan.nextInt();
+			System.out.println("Enter Food Item By ID : ");
+			int fooditemid = scan.nextInt();
+			System.out.println("Enter Quantity :");
+			int quantity = scan.nextInt();
+			Customer customer = customerService.getCustomerById(customerid);
+			FoodItem foodItem = foodItemService.getFoodItemById(fooditemid);
+	//		System.out.println(orderUpdate);
+			orderService.updateOrder(new Order(orderid,customer,foodItem,quantity));	
+			System.out.println("Order has been updated...");
+		}else
+		{
+			System.out.println("Oops!!...You Have Entered Wrong Order ID Check it Again");
+		}		
+		
+	}
+
+	private void getQuantityByOrderId() throws SQLException {
+		// TODO Auto-generated method stub
+		System.out.println("Enter Order ID :");
+		int orderid  = scan.nextInt();
+		int quantity = orderService.getQuantityBYId(orderid);
+		if(quantity > 1)
+		System.out.println("Placed Quantity of "+orderid+" is : "+quantity);
+		else
+			System.out.println("Orderid not Found...");
+		
+	}
+
 	private void getOrderDetailsByCustomerID() throws SQLException {
 		// TODO Auto-generated method stub
 		System.out.println("Enter Customer ID : ");
 		int customerid  =  scan.nextInt();
-		
-		List<Order> all = orderService.getOrderDetailsByCustomerID(customerid);
-		System.out.printf("%-9s %-1s %-73s %-1s %-56s %-1s %-3s\n","Order ID ","|","Customer Details","|","FoodItem Details","|","Placed Quantity");
-    	System.out.println();
-    	for(Order order : all)
-    	{
-    		System.out.printf("%-9s %-1s %-73s %-1s %-56s %-1s %-3s\n",order.getOrderID(),"|",order.getCustomer(),"|",order.getFoodItem(),"|",order.getQuantity());
-    	}	
-		
-		
+		System.out.println("Orders for customer ID " + customerid + ":");
+//		System.out.println(orderService.getOrderDetailsByCustomerID(customerid));
+		Customer customer = customerService.getCustomerById(customerid);
+		if(customerService.getCustomerById(customerid)==null)
+        {
+        	System.out.println("!! Check Customer ID Again !!");
+        }
+        else 
+        {
+			if(orderService.getOrderDetailsByCustomerID(customerid).isEmpty())
+			{
+				System.out.println("Customer has not placed Any Order yet..");
+			}
+			else
+			{
+			List<Order> all = orderService.getOrderDetailsByCustomerID(customerid);
+			
+			System.out.printf("%-10s %-10s %-3s","OrderID ","Item ","Quantity");
+			System.out.println();
+			
+	//		System.out.printf("%-9s %-1s %-80s %-1s %-56s %-1s %-3s\n","Order ID ","|","Customer Details","|","FoodItem Details","|","Placed Quantity");
+	    	System.out.println("---------------------------------------------------");
+	    	String Name = "";
+	    	for(Order order : all)
+	    	{
+	    		System.out.printf("%-10s %-10s %-3s",order.getOrderID(),order.getFoodItem().getItemName(),order.getQuantity());
+	    		System.out.println();
+	    		Name  = order.getCustomer().getName();
+	    	}	
+	    	System.out.println("---------------------------------------------------");
+	    	System.out.println("Order Details For "+Name);
+	    	System.out.println();
+			}
+        }
 	}
 
 	private void deleteOrder() throws SQLException {
 		// TODO Auto-generated method stub
-		
 		System.out.println("Enter Order Id to cancel Order : ");
-		int order = scan.nextInt();
-		orderService.deleteOrder(order);
-		System.out.println("Order Cancelled...");
+		int order1 = scan.nextInt();
+		Order order =  orderService.getOrderById(order1);
+//		System.out.println(order);
+		if(order != null) {
+			System.out.println("Are you sure to cancel Order ? YES/NO");
+			String choice = scan.next();
+			if(choice.equalsIgnoreCase("YES"))
+			{
+			orderService.deleteOrder(order.getOrderID());
+			System.out.println("Order Cancelled...!");
+			}
+			else {
+				System.out.println("OK ,Order is not cancelled");
+			}
+		}else
+		{
+			System.out.println("Wrong Order ID :");
+			
+		}
 		
 	}
 
 	private void viewAllOrders() throws SQLException {
     
     	List<Order> all = orderService.getAllOrders();
-    	System.out.printf("%-9s %-1s %-75s %-1s %-60s %-1s %-3s\n","Order ID ","|","Customer Details","|","FoodItem Details","|","Placed Quantity");
+    	System.out.printf("%-9s %-1s %-80s %-1s %-60s %-1s %-3s\n","Order ID ","|","Customer Details","|","FoodItem Details","|","Placed Quantity");
     	System.out.println();
     	for(Order order : all)
     	{
-    		System.out.printf("%-9s %-1s %-75s %-1s %-60s %-1s %-3s\n",order.getOrderID(),"|",order.getCustomer(),"|",order.getFoodItem(),"|",order.getQuantity());
+    		System.out.printf("%-9s %-1s %-80s %-1s %-60s %-1s %-3s\n",order.getOrderID(),"|",order.getCustomer(),"|",order.getFoodItem(),"|",order.getQuantity());
     	}
 		
 	}
@@ -179,6 +288,7 @@ public class Main {
 
 	private void deleteFooditems() throws SQLException {
 		// TODO Auto-generated method stub
+		scan.nextLine();
     	System.out.println("Enter number of food items to delete:");
         int foodItemCount = Integer.parseInt(scan.nextLine());
 
@@ -193,6 +303,7 @@ public class Main {
 
 	private void addFooditems() throws SQLException {
 		// 
+		scan.nextLine();
     	System.out.println("Enter number of food items to add:");
         int foodItemCount = Integer.parseInt(scan.nextLine());
 
@@ -212,48 +323,64 @@ public class Main {
         //place order
 		double BillSum =0.0;
 		viewAllFoodItems();
-		System.out.println("Enter number of Items to Order:");
+		System.out.println("Enter numbers of Item to Order:");
         int orderCount = scan.nextInt();
-      
-//        for (int i = 0; i < orderCount; i++) {  	
             System.out.println("Select customer by ID:");
+            System.out.println("---------------------------------");
+            System.out.printf("%-5s %-10s","ID ","Customers Name ");
+            System.out.println();
+            System.out.println("---------------------------------");
+
             List<Customer> customers = customerService.getAllCustomer();
             for (Customer customer : customers) {
-                System.out.println(customer);
+                System.out.printf("%-5s %-10s",customer.getId(),customer.getName());
+                System.out.println();
             }
-            System.out.println();
+
+            System.out.println("---------------------------------");
             int customerId = scan.nextInt();
             Customer customer = customerService.getCustomerById(customerId);
-            
-            for (int i = 0; i < orderCount; i++) {
-
-            System.out.println("Enter food item by ID:");
-//            List<FoodItem> foodItems = foodItemService.getAllFoodItems();
-//            for (FoodItem foodItem : foodItems) {
-//                System.out.println(foodItem);
-//            }
-            int foodItemId = scan.nextInt();
-            FoodItem foodItem = foodItemService.getFoodItemById(foodItemId);
-
-            System.out.println("Enter quantity:");
-            int quantity =scan.nextInt();
-
-            Order order = new Order(0, customer, foodItem, quantity); 
-            orderService.addOrder(order);
-                            
-            System.out.println("Order has been Placed succussfully....");
-            System.out.println("Please Note Your Order ID : "+orderService.getOrderId());
-            System.out.println("Your Total Bill " +"For "+foodItem.getItemName()+" is :"+ (foodItemService.getPriceBYId(foodItemId)*quantity)+"rs");     
-            BillSum = BillSum+(foodItemService.getPriceBYId(foodItemId)*quantity);
-            System.out.println();
-        }
+//            System.out.println(customerService.getCustomerById(customerId));
+            if(customerService.getCustomerById(customerId)==null)
+            {
+            	System.out.println("!! Check Customer ID Again !!");
+            }
+            else {
+	            for (int i = 0; i < orderCount; i++) {
+	            System.out.println("Enter food item by ID:");
+	
+	            int foodItemId = scan.nextInt();
+	           
+	            FoodItem foodItem = foodItemService.getFoodItemById(foodItemId);
+//	            System.out.println( foodItemService.getFoodItemById(foodItemId));
+		            if(foodItemService.getFoodItemById(foodItemId)== null)
+		            {
+		            	System.out.println("!!Check Food Item ID Again!!");
+		            }else
+		            {
+		            System.out.println("Enter quantity:");
+		            int quantity =scan.nextInt();
+		
+		            Order order = new Order(0, customer, foodItem, quantity); 
+		            orderService.addOrder(order);
+		                            
+		            System.out.println("Order has been Placed succussfully....");
+		            System.out.println("Please Note Your Order ID : "+orderService.getOrderId());
+		            System.out.println("Your Total Bill " +"For "+foodItem.getItemName()+" is :"+ (foodItemService.getPriceBYId(foodItemId)*quantity)+"rs");     
+		            BillSum = BillSum+(foodItemService.getPriceBYId(foodItemId)*quantity);
+		            System.out.println();
+		            }
+	              }
+            }     
+        if(BillSum !=0) {
         System.out.println("Total Bill : "+BillSum+"rs");
         System.out.println("Enjoy Your Food..Thank You For Ordering...!!!!");
-        System.out.println();
-        
+        }
+        System.out.println();       
 	}
         		
 	private void deleteCustomer() throws SQLException {
+		scan.nextLine();
     	System.out.println("Enter Customer ID to delete : ");
     	int id = Integer.parseInt(scan.nextLine());
     	
@@ -262,7 +389,7 @@ public class Main {
 	}
 
 	private void updateCustomer() throws SQLException {
-    	
+		scan.nextLine();
     	System.out.println("Enter Customer ID to Update : ");
         int id = Integer.parseInt(scan.nextLine());
         System.out.print("Enter new name: ");
@@ -299,9 +426,28 @@ public class Main {
     	System.out.println("---------------------------------------------------");
 	}
 
+	private void AddCustomer() throws SQLException {
+		// Adding Customer 
+    	scan.nextLine();
+    	System.out.println("Enter Name : ");
+    	String name = scan.nextLine();
+    	System.out.println("Location :");
+    	String Location = scan.nextLine();
+    	System.out.println("Phone Number :");
+    	String Phone_Num = scan.nextLine();
+    	Customer customer = new Customer();
+    	customer.setName(name);
+    	customer.setLocation(Location);
+    	customer.setPhone_Number(Phone_Num);
+    	customerService.addCustomer(customer);
+    	System.out.println("New Customer has been Succussfully Added....");	
+//    	System.out.println("Wants to an Order Something...:)");
+    
+	}
+	
 	private void registerCustomer() throws SQLException {
 		// Adding Customer 
-    	
+    	scan.nextLine();
     	System.out.println("Enter Your Name : ");
     	String name = scan.nextLine();
     	System.out.println("Location :");
@@ -313,7 +459,9 @@ public class Main {
     	customer.setLocation(Location);
     	customer.setPhone_Number(Phone_Num);
     	customerService.addCustomer(customer);
-    	System.out.println("Succussfully Added....");	
+    	System.out.println("Welcome to Our restaurant "+customer.getName()+", \nYou have been Succussfully Registered....");	
+//    	System.out.println("Wants to an Order Something...:)");
+    
 	}
 
 	private void showOrderMenu() {
@@ -321,7 +469,9 @@ public class Main {
         System.out.println("1. Menu Card");
         System.out.println("2. Place Order");
         System.out.println("3. Cancel Order");
-        System.out.println("4. Exit");
+        System.out.println("4. View Your All Orders");
+        System.out.println("5. Update Order");
+        System.out.println("6. Exit");
         System.out.print("Enter your choice: ");	
 	}
 
@@ -335,8 +485,11 @@ public class Main {
         System.out.println("6. Delete Food Items");
         System.out.println("7. View All Food Items");
         System.out.println("8. View All Orders");
-//        System.out.println("9.  View Order details By Customer ID :");
-        System.out.println("9. Exit");
+        System.out.println("9. View Order details By Customer ID ");
+        System.out.println("10. View Quantity of Specific Order ID ");
+        System.out.println("11. Cancel Order");
+        System.out.println("12. Update Order by OrderID ");
+        System.out.println("13. Exit");
         System.out.print("Enter your choice: ");
     }
 
