@@ -38,11 +38,27 @@ This project is structured in a way that demonstrates the use of the Data Access
   <th>Type</th>
   <th>Description</th>
 </tr>
-  <tr>
-  <td></td>
-  <td></td>
-  <td></td>    
+<tr>
+  <td>ID</td>
+  <td>INT</td>
+  <td>Primary Key</td>    
 </tr>
+<tr>
+  <td>Name</td>
+  <td>varchar(50)</td>
+  <td>Customer's Name</td>    
+</tr>
+<tr>
+  <td>Location</td>
+  <td>varchar(50)</td>
+  <td>Customer's Location</td>    
+</tr>
+<tr>
+  <td>Phone Number</td>
+  <td>varchar(10)</td>
+  <td>Customer's Phone Number</td>    
+</tr>
+  
 </table>
 
 <h3>Setup Instructions</h3>
