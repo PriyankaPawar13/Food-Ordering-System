@@ -26,7 +26,7 @@ This project is structured in a way that demonstrates the use of the Data Access
 <li><b>Main:</b> Entry point of the application, demonstrating how to use the various components.</li>
 <li><b>utility:</b> for DataBase Connection </li>
 </ol>
-<!--
+
 <h3>Database Schema</h3>
 <b>The database consists of three tables: Customer, FoodItem, and Order.</b>
 
@@ -44,14 +44,13 @@ This project is structured in a way that demonstrates the use of the Data Access
   <td></td>    
 </tr>
 </table>
- -->
+
 <h3>Setup Instructions</h3>
 <h2>Prerequisites</h2><ul>
 <li>Java Development Kit (JDK) 8 or higher</li>
 <li>MySQL Database  </li>
 </ul>
 
-<!--
 <h3>Step-by-Step Setup</h3>
 bash
 <b>Clone the repository:</b>
@@ -106,6 +105,6 @@ javac -d bin src/main/java/com/foodorderingsystem/Main.java
 java -cp bin com.foodorderingsystem.Main
 
 </ul>
- -->
+
 
 
