@@ -135,8 +135,8 @@ This project is structured in a way that demonstrates the use of the Data Access
 <p>
 <p>USE FoodOrderingSystem;</p>
 <p>CREATE TABLE Customer (</p>
-    <p>&nbps&nbps&nbps  id INT PRIMARY KEY AUTO_INCREMENT,</p>
-  <p> &nbps&nbps&nbps name VARCHAR(100) NOT NULL</p>
+    <p>&nbsp;&nbsp;&nbsp;  id INT PRIMARY KEY AUTO_INCREMENT,</p>
+  <p> &nbsp;&nbsp;&nbsp; name VARCHAR(100) NOT NULL</p>
 <p>);</p>
 
 CREATE TABLE FoodItem (
