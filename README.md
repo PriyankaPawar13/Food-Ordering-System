@@ -60,7 +60,6 @@ This project is structured in a way that demonstrates the use of the Data Access
 </tr>
   
 </table>
-<br>
 <p><b>`FoodItem` Table :</b></p>
 <table>
 <tr>
@@ -69,12 +68,12 @@ This project is structured in a way that demonstrates the use of the Data Access
   <th>Description</th>
 </tr>
 <tr>
-  <td>ITEMID</td>
+  <td>ItemID</td>
   <td>INT</td>
   <td>Primary Key</td>
 </tr>
 <tr>
-  <td>ITEMNAME</td>
+  <td>ItemName</td>
   <td>Varchar</td>
   <td>Food Item Name</td>
 </tr>
@@ -82,6 +81,35 @@ This project is structured in a way that demonstrates the use of the Data Access
   <td>Price</td>
   <td>Double</td>
   <td>Food Item Price</td>
+</tr>
+</table>
+
+<p><b>`Order` Table :</b></p>
+<table>
+<tr>
+  <th>Column</th>
+  <th>Type</th>
+  <th>Description</th>
+</tr>
+<tr>
+  <td>OrderID</td>
+  <td>INT</td>
+  <td>Primary Key</td>
+</tr>
+<tr>
+  <td>CustomerID</td>
+  <td>INT</td>
+  <td>Foreign key referencing `customer(id)`</td>
+</tr>
+<tr>
+  <td>FoodItemID</td>
+  <td>INT</td>
+  <td>Foreign key referencing `FoodItem(ItemID)`</td>
+</tr>
+<tr>
+  <td>Quantity</td>
+  <td>INT</td>
+  <td>Quantity of FoodItem</td>
 </tr>
 </table>
 
