@@ -114,30 +114,30 @@ This project is structured in a way that demonstrates the use of the Data Access
 </table>
 
 <h3>Setup Instructions</h3>
-<h2>Prerequisites</h2><ul>
+<h2>Prerequisites</h2>
+<ul>
 <li>Java Development Kit (JDK) 8 or higher</li>
 <li>MySQL Database  </li>
 </ul>
 
 <h3>Step-by-Step Setup</h3>
-bash
+<p>BASH</p>
 <b>Clone the repository:</b>
-<ul>
+<ol>
 <li>Copy code</li>
-<p>git clone https://github.com/yourusername/FoodOrderingSystem.git</p>
+<p>git clone https://github.com/PriyankaPawar13/FoodOrderingSystem.git</p>
 <p> cd FoodOrderingSystem</p>
 
 <li>Create the database and tables:</li>
 </p>
-sql
+<p>SQL</p>
 <b>CREATE DATABASE FoodOrderingSystem;</b>
 <p>
-USE FoodOrderingSystem;
-
-CREATE TABLE Customer (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL
-);
+<p>USE FoodOrderingSystem;</p>
+<p>CREATE TABLE Customer (</p>
+    <p>id INT PRIMARY KEY AUTO_INCREMENT,</p>
+  <p>  name VARCHAR(100) NOT NULL</p>
+<p>);</p>
 
 CREATE TABLE FoodItem (
     itemId INT PRIMARY KEY AUTO_INCREMENT,
@@ -172,7 +172,7 @@ javac -d bin src/main/java/com/foodorderingsystem/Main.java
 
 java -cp bin com.foodorderingsystem.Main
 
-</ul>
+</ol>
 
 
 
