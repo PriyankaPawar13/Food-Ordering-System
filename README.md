@@ -29,8 +29,8 @@ This project is structured in a way that demonstrates the use of the Data Access
 
 <h3>Database Schema</h3>
 <b>The database consists of three tables: Customer, FoodItem, and Order.</b>
-
-<p><b>Customer Table :</b></p>
+<br>
+<p><b>`Customer` Table :</b></p>
 
 <table>
 <tr >
@@ -59,6 +59,30 @@ This project is structured in a way that demonstrates the use of the Data Access
   <td>Customer's Phone Number</td>    
 </tr>
   
+</table>
+<br>
+<p><b>`FoodItem` Table :</b></p>
+<table>
+<tr>
+  <th>Column</th>
+  <th>Type</th>
+  <th>Description</th>
+</tr>
+<tr>
+  <td>ITEMID</td>
+  <td>INT</td>
+  <td>Primary Key</td>
+</tr>
+<tr>
+  <td>ITEMNAME</td>
+  <td>Varchar</td>
+  <td>Food Item Name</td>
+</tr>
+<tr>
+  <td>Price</td>
+  <td>Double</td>
+  <td>Food Item Price</td>
+</tr>
 </table>
 
 <h3>Setup Instructions</h3>
