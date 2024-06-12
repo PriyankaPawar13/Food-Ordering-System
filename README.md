@@ -129,7 +129,7 @@ This project is structured in a way that demonstrates the use of the Data Access
 <p> cd FoodOrderingSystem</p>
 
 <li>Create the database and tables:</li>
-<ul>
+<ul style="list-style-type:square">
   <li>CREATE DATABASE FoodOrderingSystem;</li>
 
 <li>USE FoodOrderingSystem;</li>
