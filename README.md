@@ -121,7 +121,7 @@ This project is structured in a way that demonstrates the use of the Data Access
 </ul>
 
 <h3>Step-by-Step Setup</h3>
-<p>BASH</p>
+<p> --Bash</p>
 <b>Clone the repository:</b>
 <ol>
 <li>Copy code</li>
@@ -129,14 +129,14 @@ This project is structured in a way that demonstrates the use of the Data Access
 <p> cd FoodOrderingSystem</p>
 
 <li>Create the database and tables:</li>
-</p>
-<p>SQL</p>
+
+<p>--SQL</p>
 <b>CREATE DATABASE FoodOrderingSystem;</b>
 <p>
 <p>USE FoodOrderingSystem;</p>
 <p>CREATE TABLE Customer (</p>
-    <p>id INT PRIMARY KEY AUTO_INCREMENT,</p>
-  <p>  name VARCHAR(100) NOT NULL</p>
+    <p>&nbps&nbps&nbps  id INT PRIMARY KEY AUTO_INCREMENT,</p>
+  <p> &nbps&nbps&nbps name VARCHAR(100) NOT NULL</p>
 <p>);</p>
 
 CREATE TABLE FoodItem (
