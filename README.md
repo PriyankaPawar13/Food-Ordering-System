@@ -129,22 +129,23 @@ This project is structured in a way that demonstrates the use of the Data Access
 <p> cd FoodOrderingSystem</p>
 
 <li>Create the database and tables:</li>
+<ul>
+  <li>CREATE DATABASE FoodOrderingSystem;</li>
 
-<b>CREATE DATABASE FoodOrderingSystem;</b>
-<p>
-<p>USE FoodOrderingSystem;</p>
-<p>CREATE TABLE Customer (</p>
+<li>USE FoodOrderingSystem;</li>
+<li><p></p>CREATE TABLE Customer (</p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  id INT PRIMARY KEY AUTO_INCREMENT,</p>
   <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name VARCHAR(100) NOT NULL</p>
-<p>);</p>
-<br>
+<p>);</p></li>
+
+<li>
 <p>CREATE TABLE FoodItem (</p>
    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itemId INT PRIMARY KEY AUTO_INCREMENT,</p>
    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itemName VARCHAR(100) NOT NULL,</p>
   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  itemPrice DOUBLE NOT NULL</p>
 <p>);</p>
-
-<br>
+</li>
+<li>
 <p>CREATE TABLE `Order` (</p>
   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  orderId INT PRIMARY KEY AUTO_INCREMENT,</p>
    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; customerId INT,</p>
@@ -153,6 +154,8 @@ This project is structured in a way that demonstrates the use of the Data Access
   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FOREIGN KEY (customerId) REFERENCES Customer(id),</p>
   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FOREIGN KEY (foodItemId) REFERENCES FoodItem(itemId)</p>
 <p>);</p>
+</li>
+</ul>
 
 </p>
 Configure the database connection:
