@@ -121,7 +121,7 @@ This project is structured in a way that demonstrates the use of the Data Access
 </ul>
 
 <h3>Step-by-Step Setup</h3>
-<p> --Bash</p>
+
 <b>Clone the repository:</b>
 <ol>
 <li>Copy code</li>
@@ -130,29 +130,29 @@ This project is structured in a way that demonstrates the use of the Data Access
 
 <li>Create the database and tables:</li>
 
-<p>--SQL</p>
 <b>CREATE DATABASE FoodOrderingSystem;</b>
 <p>
 <p>USE FoodOrderingSystem;</p>
 <p>CREATE TABLE Customer (</p>
-    <p>&nbsp;&nbsp;&nbsp;  id INT PRIMARY KEY AUTO_INCREMENT,</p>
-  <p> &nbsp;&nbsp;&nbsp; name VARCHAR(100) NOT NULL</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  id INT PRIMARY KEY AUTO_INCREMENT,</p>
+  <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name VARCHAR(100) NOT NULL</p>
+<p>);</p>
+<br>
+<p>CREATE TABLE FoodItem (</p>
+   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itemId INT PRIMARY KEY AUTO_INCREMENT,</p>
+   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itemName VARCHAR(100) NOT NULL,</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  itemPrice DOUBLE NOT NULL</p>
 <p>);</p>
 
-CREATE TABLE FoodItem (
-    itemId INT PRIMARY KEY AUTO_INCREMENT,
-    itemName VARCHAR(100) NOT NULL,
-    itemPrice DOUBLE NOT NULL
-);
-
-CREATE TABLE `Order` (
-    orderId INT PRIMARY KEY AUTO_INCREMENT,
-    customerId INT,
-    foodItemId INT,
-    quantity INT,
-    FOREIGN KEY (customerId) REFERENCES Customer(id),
-    FOREIGN KEY (foodItemId) REFERENCES FoodItem(itemId)
-);
+<br>
+<p>CREATE TABLE `Order` (</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  orderId INT PRIMARY KEY AUTO_INCREMENT,</p>
+   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; customerId INT,</p>
+   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foodItemId INT,</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  quantity INT,</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FOREIGN KEY (customerId) REFERENCES Customer(id),</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  FOREIGN KEY (foodItemId) REFERENCES FoodItem(itemId)</p>
+<p>);</p>
 
 </p>
 Configure the database connection:
