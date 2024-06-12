@@ -155,14 +155,13 @@ This project is structured in a way that demonstrates the use of the Data Access
 </li>
 </ul>
 <li><b>Configure the database connection:</b></li>
+<br>
 <p>Update the application.properties file with your database credentials:</p>
 
-jdbc.url=jdbc:mysql://localhost:3306/FoodOrderingSystem
-jdbc.user=root
-jdbc.password=password
-
-<li><b></b>Compile and run the application:<b></li>
-
+<p>jdbc.url=jdbc:mysql://localhost:3306/FoodOrderingSystem</p>
+<p>jdbc.user=root</p>
+<p>jdbc.password=password</p>
+<li><b>Compile and run the application:</b></li>
 </ol>
 
 
