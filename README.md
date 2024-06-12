@@ -121,14 +121,12 @@ This project is structured in a way that demonstrates the use of the Data Access
 </ul>
 
 <h3>Step-by-Step Setup</h3>
-
-<b>Clone the repository:</b>
 <ol>
-<li>Copy code</li>
+<li><b>Clone the repository:</b></li>
 <p>git clone https://github.com/PriyankaPawar13/FoodOrderingSystem.git</p>
 <p> cd FoodOrderingSystem</p>
 
-<li>Create the database and tables:</li>
+<li><b>Create the database and tables:</b></li>
 <ul style="style-type:square">
   <li>CREATE DATABASE FoodOrderingSystem;</li>
 
@@ -156,15 +154,14 @@ This project is structured in a way that demonstrates the use of the Data Access
 <p>);</p>
 </li>
 </ul>
-<li>
-Configure the database connection:</li>
+<li><b>Configure the database connection:</b></li>
 <p>Update the application.properties file with your database credentials:</p>
 
 jdbc.url=jdbc:mysql://localhost:3306/FoodOrderingSystem
 jdbc.user=root
 jdbc.password=password
 
-<li>Compile and run the application:</li>
+<li><b></b>Compile and run the application:<b></li>
 
 </ol>
 
