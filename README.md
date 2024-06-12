@@ -129,7 +129,7 @@ This project is structured in a way that demonstrates the use of the Data Access
 <p> cd FoodOrderingSystem</p>
 
 <li>Create the database and tables:</li>
-<ul style="list-style-type:square">
+<ul style="style-type:square">
   <li>CREATE DATABASE FoodOrderingSystem;</li>
 
 <li>USE FoodOrderingSystem;</li>
@@ -156,24 +156,15 @@ This project is structured in a way that demonstrates the use of the Data Access
 <p>);</p>
 </li>
 </ul>
+<li>
+Configure the database connection:</li>
+<p>Update the application.properties file with your database credentials:</p>
 
-</p>
-Configure the database connection:
-Update the application.properties file with your database credentials:
-
-properties
-Copy code
 jdbc.url=jdbc:mysql://localhost:3306/FoodOrderingSystem
 jdbc.user=root
-jdbc.password=yourpassword
-Compile and run the application:
+jdbc.password=password
 
-bash
-Copy code
-javac -d bin src/main/java/com/foodorderingsystem/Main.java
-
-
-java -cp bin com.foodorderingsystem.Main
+<li>Compile and run the application:</li>
 
 </ol>
 
